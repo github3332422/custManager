@@ -20,9 +20,10 @@
 	       </if>
         </where>
     </sql>
-	<!-- 查询客户列表  -->
-	<select id="selectCustomerList" parameterType="customer" 
-                                           resultType="customer">
+	<!--
+	查询客户列表:
+	-->
+	<select id="selectCustomerList" parameterType="customer" resultType="customer">
 		SELECT
 			cust_id,
 			cust_name,
@@ -70,12 +71,15 @@
 			limit #{start},#{rows}
 		</if>
 	</select>
+
+
 	<!-- 查询客户总数 -->
 	<select id="selectCustomerListCount" parameterType="customer" resultType="Integer">
 		select count(*) from customer
 		<include refid="selectCustomerListWhere"/>
 	</select>	
-	
+
+
 	<!-- 添加客户 -->
 	<insert id="createCustomer" parameterType="customer">
 	    insert into customer(
@@ -164,4 +168,5 @@
 	<delete id="deleteCustomer" parameterType="Integer">
 	    delete from customer where cust_id=#{id}
 	</delete>
+
 </mapper>

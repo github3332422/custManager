@@ -32,7 +32,7 @@ public class CustomerController {
     @Autowired
     private BaseDictService baseDictService;
 
-    @Value("${customer.from.type")
+    @Value("${customer.from.type}")
     private String FROM_TYPE;
 
     @Value("${customer.industry.type}")
@@ -57,12 +57,15 @@ public class CustomerController {
         // 客户来源
         List<BaseDict> fromType = baseDictService
                 .findBaseDictByTypeCode(FROM_TYPE);
+//        System.out.println("fromType" + fromType);
         // 客户所属行业
         List<BaseDict> industryType = baseDictService
                 .findBaseDictByTypeCode(INDUSTRY_TYPE);
+//        System.out.println("industryType" + industryType);
         // 客户级别
         List<BaseDict> levelType = baseDictService
                 .findBaseDictByTypeCode(LEVEL_TYPE);
+//        System.out.println("levelType" + levelType);
         // 添加参数
         model.addAttribute("fromType", fromType);
         model.addAttribute("industryType", industryType);

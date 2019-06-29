@@ -17,7 +17,10 @@
     <!--读取db.properties -->
     <context:property-placeholder location="classpath:db.properties"/>
 
-    <!-- 配置数据源 -->
+    <!--
+    配置数据源
+    	加入了设置最大连接数，最大空闲数和初始化连接数
+    -->
     <bean id="dataSource" 
          class="org.apache.commons.dbcp2.BasicDataSource">
          <property name="driverClassName" value="${jdbc.driver}" />
@@ -54,23 +57,22 @@
 
 	<!-- 切面 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice"
-			 pointcut="execution(* edu.javaee.core.service.*.*(..))" />
+		<!-- 配置切入点 -->
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* edu.javaee.core.service.*.*(..))" />
 	</aop:config>
 
-	<!-- 配置 MyBatis -->
+	<!-- 配置 MyBatis 配置SqlSessionFactory-->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 配置MyBatis的核心配置文件所在位置 -->
-		<property name="configLocation" 
-                     value="classpath:mybatis-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
+
 	<!-- 接口开发,扫描 edu.javaee.core.dao包 ，写在此包下的接口即可被扫描到 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="edu.javaee.core.dao" />
 	</bean>
-
 
 	<!-- 配置扫描@Service注解 -->
 	<context:component-scan base-package="edu.javaee.core.service"/>

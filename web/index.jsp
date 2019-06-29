@@ -7,4 +7,4 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- 转发到登录页面 -->
-<jsp:forward page="/WEB-INF/jsp/login.jsp"/>
+<jsp:forward page="/WEB-INF/views/login.jsp"/>

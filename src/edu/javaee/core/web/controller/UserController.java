@@ -38,7 +38,7 @@ public class UserController {
 			return "customer";
 //            return "redirect:customer/list.action";
         }
-        model.addAttribute("msg", "账号或密码错误，请重新输入！");
+        model.addAttribute("msg", "账号或密码错误！");
         return "login";
     }
 

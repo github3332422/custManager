@@ -107,7 +107,7 @@ public class CustomerController {
     @ResponseBody
     public Customer getCustomerById(Integer id) {
         Customer customer = customerService.getCustomerById(id);
-        System.out.println(customer);
+//        System.out.println(customer);
         return customer;
     }
 

@@ -4,22 +4,27 @@
 <html>
 <head>
 <title>登录页面</title>
-	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-<script>
-// 判断是登录账号和密码是否为空
-function check(){
-    var usercode = $("#usercode").val();
-    var password = $("#password").val();
-    if(usercode=="" || password==""){
-    	$("#message").text("账号或密码不能为空！");
-        return false;
-    }  
-    return true;
-}
-</script>
+<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        function check() {
+            var usercode = $("#usercode").val();
+            var password = $("#password").val();
+            if(usercode == null || usercode == ""){
+                alert("用户名不能为空");
+                $("#usercode").focus();
+                return false;
+            }
+            if(password == null || password == ""){
+                alert("密码不能为空");
+                $("#password").focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
-	<form id="form1" class="well"
-		  style="width: 30em; margin: auto; margin-top: 150px;"
+	<form id="form1" class="well" style="width: 30em; margin: auto; margin-top: 150px;"
 		  method="post" action="/login.action" onsubmit="return check()">
 		<h3>用户登录
 			<font color="red">
